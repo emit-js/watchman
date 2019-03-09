@@ -12,7 +12,7 @@ You'll need to start watchman (`brew install watchman`).
 
 ## Usage
 
-In the examples below, we want trigger `npm run build` when `*.js` changes:
+In the examples below, we want to trigger `npm run build` when `*.js` changes:
 
 ```js
 dot watchman --glob="*.js" --command=npm --args=run --args=build
