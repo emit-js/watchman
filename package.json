@@ -1,6 +1,6 @@
 {
   "name": "watchman",
-  "main": "watchman.js",
+  "main": "dist/watchman.js",
   "version": "1.0.0",
   "description": "dot-event watchman runner",
   "keywords": [

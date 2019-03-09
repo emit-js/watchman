@@ -1,5 +1,5 @@
-const { basename, join } = require("path")
-const { readJson } = require("fs-extra")
+import { readJson } from "fs-extra"
+import { basename, join } from "path"
 
 module.exports = function(dot) {
   if (dot.watchman) {
@@ -23,10 +23,12 @@ module.exports = function(dot) {
 }
 
 async function watchman(prop, arg, dot) {
-  var cwd = arg.cwd,
-    del = arg.del
+  const { cwd, del } = arg,
+    trigger = await buildTrigger(prop, arg)
 
-  var trigger = await buildTrigger(prop, arg)
+  if (!trigger) {
+    return
+  }
 
   if (del) {
     return dot.spawn(prop, {
@@ -35,7 +37,7 @@ async function watchman(prop, arg, dot) {
       command: "watchman",
     })
   } else {
-    var payload = ["trigger", cwd, trigger]
+    const payload = ["trigger", cwd, trigger]
 
     return dot.spawn(prop, {
       args: [
@@ -51,25 +53,23 @@ async function watchman(prop, arg, dot) {
 }
 
 async function buildTrigger(prop, arg) {
-  var args = arg.args,
-    command = arg.command,
-    cwd = arg.cwd,
-    glob = arg.glob,
-    name = arg.name,
-    script = arg.script
+  const { cwd, name, script } = arg
+  var { args, command, glob } = arg
 
   if (script) {
-    var pkg = await readJson(join(cwd, "package.json"))
+    const pkg = await readJson(join(cwd, "package.json"))
 
     if (pkg.scripts && pkg.scripts[script]) {
       command = command || "npm"
       args = args || ["run", script]
       glob =
         glob || pkg.scripts[script].match(/[/*]+\.\w+/gi)
+    } else {
+      return
     }
   }
 
-  var trigger = {
+  const trigger = {
     command: [command].concat(args),
     expression: ["anyof"],
     name: name || script || basename(cwd),

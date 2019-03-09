@@ -5,7 +5,7 @@
 ## Install
 
 ```bash
-npm install -g @dot-event/cli @dot-event/watchman
+npm install -g @dot-event/cli @dot-event/spawn @dot-event/watchman
 ```
 
 You should already have watchman service running (`brew install watchman`).
