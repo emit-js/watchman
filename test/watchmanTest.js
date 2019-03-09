@@ -24,6 +24,21 @@ describe("watchmanTrigger", function() {
     })
   })
 
+  test("with args, command, cwd, and glob", async () => {
+    expect(
+      await dot.watchmanTrigger({
+        args: "-lah",
+        command: "ls",
+        cwd: `${__dirname}/fixture`,
+        glob: "*.js",
+      })
+    ).toEqual({
+      command: ["ls", "-lah"],
+      expression: ["anyof", ["match", "*.js", "wholename"]],
+      name: "fixture",
+    })
+  })
+
   test("with script", async () => {
     expect(
       await dot.watchmanTrigger({
