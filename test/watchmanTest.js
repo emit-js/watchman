@@ -1,11 +1,9 @@
 /* eslint-env jest */
 
-import watchman from "../"
-
 const dot = require("dot-event")()
 
 require("@dot-event/log")(dot)
-watchman(dot)
+require("../")(dot)
 
 describe("watchmanTrigger", function() {
   test("without command", () => {
