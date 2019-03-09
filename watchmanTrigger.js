@@ -27,7 +27,7 @@ async function watchmanTrigger(prop, arg) {
   }
 
   if (!command) {
-    throw new Error("no command specified")
+    throw new Error("Watchman needs a command or script.")
   }
 
   const trigger = {
