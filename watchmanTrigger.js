@@ -33,7 +33,8 @@ async function watchmanTrigger(prop, arg) {
   const trigger = {
     command: [command].concat(args || []),
     expression: ["anyof"],
-    name: name || script || cwd ? basename(cwd) : "default",
+    name:
+      name || script || (cwd ? basename(cwd) : "default"),
   }
 
   if (glob) {

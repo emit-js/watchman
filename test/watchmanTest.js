@@ -37,7 +37,7 @@ describe("watchmanTrigger", function() {
         ["match", "**/*.js", "wholename"],
         ["match", "*.jsx", "wholename"],
       ],
-      name: "fixture",
+      name: "ls",
     })
   })
 })
