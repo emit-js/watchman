@@ -8,19 +8,29 @@
 npm install -g @dot-event/cli @dot-event/spawn @dot-event/watchman
 ```
 
-You should already have watchman service running (`brew install watchman`).
+You'll need to start watchman (`brew install watchman`).
 
 ## Usage
 
-We want to watch `*.js` for changes and trigger `npm run build`.
-
-The explicit way:
+In the examples below, we want trigger `npm run build` when `*.js` changes:
 
 ```js
 dot watchman --glob="*.js" --command=npm --args=run --args=build
 ```
 
-The short way (detects glob strings from `package.json` script):
+## Detect glob from script entry
+
+If you have a `package.json` script with the glob somewhere in it:
+
+```json
+{
+  "scripts": {
+    "build": "babel *.js --out-dir dist --source-maps"
+  }
+}
+```
+
+The `--script` option is a quick way to add a trigger:
 
 ```js
 dot watchman --script=build
