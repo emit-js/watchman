@@ -8,7 +8,7 @@
 npm install -g @dot-event/cli @dot-event/spawn @dot-event/watchman
 ```
 
-You'll need to start watchman (`brew install watchman`).
+You'll also need to start watchman (`brew install watchman`).
 
 ## Usage
 
