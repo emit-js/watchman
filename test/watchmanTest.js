@@ -9,7 +9,6 @@ watchman(dot)
 
 describe("watchmanTrigger", function() {
   test("without command", () => {
-    expect.assertions(1)
     expect(dot.watchmanTrigger({})).rejects.toThrow(
       expect.any(Error)
     )
