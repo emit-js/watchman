@@ -1,7 +1,7 @@
 {
   "name": "@dot-event/watchman",
   "main": "dist/watchman.js",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "dot-event watchman runner",
   "keywords": [
     "dot-event",
@@ -26,8 +26,8 @@
     "@babel/plugin-proposal-object-rest-spread": "7.3.4",
     "@babel/plugin-transform-runtime": "7.3.4",
     "@babel/preset-env": "7.3.4",
-    "@dot-event/log": "1.0.24",
-    "@dot-event/spawn": "3.0.10",
+    "@dot-event/log": "1.0.25",
+    "@dot-event/spawn": "3.0.11",
     "babel-core": "7.0.0-bridge.0",
     "babel-eslint": "10.0.1",
     "dot-event": "3.1.2",
