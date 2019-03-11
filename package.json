@@ -1,5 +1,5 @@
 {
-  "name": "watchman",
+  "name": "@dot-event/watchman",
   "main": "dist/watchman.js",
   "version": "1.0.1",
   "description": "dot-event watchman runner",
