@@ -40,7 +40,7 @@
     "prettier": "1.16.4"
   },
   "scripts": {
-    "build": "babel *.js --out-dir dist --source-maps",
+    "build": "rm -rf dist; babel *.js --out-dir dist --source-maps",
     "prepublishOnly": "npm run build",
     "fix": "npm run lint -- --fix",
     "lint": "eslint --ignore-path .gitignore --ext=js .",
