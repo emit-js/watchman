@@ -1,7 +1,7 @@
 {
   "name": "@dot-event/watchman",
   "main": "dist/watchman.js",
-  "version": "1.0.15",
+  "version": "1.0.16",
   "description": "dot-event watchman runner",
   "keywords": [
     "dot-event",
