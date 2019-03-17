@@ -27,7 +27,7 @@
     "@babel/plugin-transform-runtime": "7.3.4",
     "@babel/preset-env": "7.3.4",
     "@dot-event/log": "1.0.29",
-    "@dot-event/spawn": "3.0.20",
+    "@dot-event/spawn": "3.0.21",
     "babel-core": "7.0.0-bridge.0",
     "babel-eslint": "10.0.1",
     "dot-event": "3.2.1",
