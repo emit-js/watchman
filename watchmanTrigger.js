@@ -10,11 +10,11 @@ module.exports = function(dot) {
 }
 
 async function watchmanTrigger(prop, arg) {
-  const { cwd, name, script } = arg
+  const { path, name, script } = arg
   var { args, command, glob } = arg
 
   if (script) {
-    const pkg = await readJson(join(cwd, "package.json"))
+    const pkg = await readJson(join(path, "package.json"))
 
     if (pkg.scripts && pkg.scripts[script]) {
       command = command || "npm"
@@ -34,7 +34,7 @@ async function watchmanTrigger(prop, arg) {
     command: [command].concat(args || []),
     expression: ["anyof"],
     name:
-      name || script || (cwd ? basename(cwd) : "default"),
+      name || script || (path ? basename(path) : "default"),
   }
 
   if (glob) {
