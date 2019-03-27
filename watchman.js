@@ -35,7 +35,7 @@ async function watchman(prop, arg, dot) {
   return Promise.all(
     paths.map(
       async path =>
-        await dot.watchmanProject(prop, {
+        await dot.watchmanPath(prop, {
           ...arg,
           path,
           paths,
