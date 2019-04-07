@@ -1,21 +1,21 @@
-module.exports = function(dot) {
-  if (dot.watchmanPath) {
+module.exports = function(emit) {
+  if (emit.watchmanPath) {
     return
   }
 
-  dot.any("watchmanPath", watchmanPath)
+  emit.any("watchmanPath", watchmanPath)
 }
 
-async function watchmanPath(prop, arg, dot) {
+async function watchmanPath(arg, prop, emit) {
   const { del, path } = arg,
-    trigger = await dot.watchmanTrigger(prop, arg)
+    trigger = await emit.watchmanTrigger(prop, arg)
 
   if (!trigger) {
     return
   }
 
   if (del) {
-    return dot.spawn(prop, {
+    return emit.spawn(prop, {
       args: ["trigger-del", path, trigger.name],
       cli: true,
       command: "watchman",
@@ -23,7 +23,7 @@ async function watchmanPath(prop, arg, dot) {
   } else {
     const payload = ["trigger", path, trigger]
 
-    return dot.spawn(prop, {
+    return emit.spawn(prop, {
       args: [
         "-c",
         "watchman -j <<-EOT\n" +

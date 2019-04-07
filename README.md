@@ -1,11 +1,11 @@
-# @dot-event/watchman
+# @emit-js/watchman
 
 ![watchman](watchman.gif)
 
 ## Install
 
 ```bash
-npm install -g @dot-event/cli @dot-event/spawn @dot-event/watchman
+npm install -g @emit-js/cli @emit-js/spawn @emit-js/watchman
 ```
 
 You'll also need to start watchman (`brew install watchman`).
@@ -15,7 +15,7 @@ You'll also need to start watchman (`brew install watchman`).
 In the examples below, we want to trigger `npm run build` when `*.js` changes:
 
 ```js
-dot watchman --glob="*.js" --command=npm --args=run --args=build
+emit watchman --glob="*.js" --command=npm --args=run --args=build
 ```
 
 ## Detect glob from script entry
@@ -33,5 +33,5 @@ If you have a `package.json` script with the glob somewhere in it:
 The `--script` option is a quick way to add a trigger:
 
 ```js
-dot watchman --script=build
+emit watchman --script=build
 ```

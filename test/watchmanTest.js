@@ -1,20 +1,20 @@
 /* eslint-env jest */
 
-const dot = require("dot-event")()
+const emit = require("@emit-js/emit")()
 
-require("@dot-event/log")(dot)
-require("../")(dot)
+require("@emit-js/log")(emit)
+require("../")(emit)
 
 describe("watchmanTrigger", function() {
   test("without command", () => {
-    expect(dot.watchmanTrigger({})).rejects.toThrow(
+    expect(emit.watchmanTrigger({})).rejects.toThrow(
       expect.any(Error)
     )
   })
 
   test("with command", async () => {
     expect(
-      await dot.watchmanTrigger({ command: "ls" })
+      await emit.watchmanTrigger({ command: "ls" })
     ).toEqual({
       command: ["ls"],
       expression: ["anyof"],
@@ -24,7 +24,7 @@ describe("watchmanTrigger", function() {
 
   test("with args, command, cwd, and glob", async () => {
     expect(
-      await dot.watchmanTrigger({
+      await emit.watchmanTrigger({
         args: "-lah",
         command: "ls",
         glob: "*.js",
@@ -39,7 +39,7 @@ describe("watchmanTrigger", function() {
 
   test("with script", async () => {
     expect(
-      await dot.watchmanTrigger({
+      await emit.watchmanTrigger({
         path: `${__dirname}/fixture`,
         script: "ls",
       })

@@ -1,13 +1,13 @@
-module.exports = function(dot) {
-  if (dot.watchman) {
+module.exports = function(emit) {
+  if (emit.watchman) {
     return
   }
 
-  dot("dependencies", "watchman", {
-    arg: ["@dot-event/glob", "@dot-event/spawn"],
-  })
+  emit("dependencies", "watchman",
+    ["@emit-js/glob", "@emit-js/spawn"],
+  )
 
-  dot("args", "watchman", {
+  emit("args", "watchman", {
     args: { alias: "a" },
     command: { alias: "c" },
     del: { alias: "d" },
@@ -20,14 +20,14 @@ module.exports = function(dot) {
     script: { alias: "s" },
   })
 
-  require("./watchmanPath")(dot)
-  require("./watchmanTrigger")(dot)
+  require("./watchmanPath")(emit)
+  require("./watchmanTrigger")(emit)
 
-  dot.any("watchman", watchman)
+  emit.any("watchman", watchman)
 }
 
-async function watchman(prop, arg, dot) {
-  const paths = await dot.glob(prop, {
+async function watchman(arg, prop, emit) {
+  const paths = await emit.glob(prop, {
     absolute: true,
     pattern: arg.paths,
   })
@@ -35,7 +35,7 @@ async function watchman(prop, arg, dot) {
   return Promise.all(
     paths.map(
       async path =>
-        await dot.watchmanPath(prop, {
+        await emit.watchmanPath(prop, {
           ...arg,
           path,
           paths,

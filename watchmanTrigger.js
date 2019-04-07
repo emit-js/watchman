@@ -1,15 +1,15 @@
 import { readJson } from "fs-extra"
 import { basename, join } from "path"
 
-module.exports = function(dot) {
-  if (dot.watchmanTrigger) {
+module.exports = function(emit) {
+  if (emit.watchmanTrigger) {
     return
   }
 
-  dot.any("watchmanTrigger", watchmanTrigger)
+  emit.any("watchmanTrigger", watchmanTrigger)
 }
 
-async function watchmanTrigger(prop, arg) {
+async function watchmanTrigger(arg, prop) {
   const { path, name, script } = arg
   var { args, command, glob } = arg
 
