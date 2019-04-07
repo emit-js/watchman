@@ -1,5 +1,7 @@
 # @emit-js/watchman
 
+emit watchman triggers
+
 ![watchman](watchman.gif)
 
 ## Install

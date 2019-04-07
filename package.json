@@ -4,7 +4,7 @@
   "version": "1.0.24",
   "description": "emit watchman triggers",
   "keywords": [
-    "@emit-js/emit",
+    "emit",
     "watchman",
     "trigger"
   ],
