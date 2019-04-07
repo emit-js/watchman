@@ -1,7 +1,7 @@
 {
   "name": "@emit-js/watchman",
   "main": "dist/watchman.js",
-  "version": "1.0.26",
+  "version": "1.0.27",
   "description": "emit watchman triggers",
   "keywords": [
     "emit",
@@ -28,7 +28,7 @@
     "@babel/preset-env": "7.4.3",
     "@emit-js/glob": "0.0.11",
     "@emit-js/log": "1.0.40",
-    "@emit-js/spawn": "3.0.28",
+    "@emit-js/spawn": "3.0.29",
     "babel-core": "7.0.0-bridge.0",
     "babel-eslint": "10.0.1",
     "@emit-js/emit": "3.2.9",
